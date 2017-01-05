@@ -1,1 +1,5 @@
-<h1> successfully created! </h1>
+<h1> list of events in your area </h1>
+<h1>All events today and tommorow in a 12 mile radius</h1>
+<% @events.each do |event| %>
+<%= event["title"] %>
+<% end %>
