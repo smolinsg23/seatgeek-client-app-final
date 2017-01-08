@@ -1,3 +1,13 @@
+
+<h1> Events near you </h1>
+<%= form_tag '/events', method: :post do %>
+<%= label_tag :event_id %>
+<%= text_field_tag :event %>
+<%= submit_tag "Submit" %>
+<% end %>
 <%@a.each do |event|%>
-     <%= event["title"] %>
+   <p>  <%= event["title"] %> <%= event["datetime_local"]%></p>
+   <a href="/events/<%=event["id"]%>">Go to this event</a>
    <%end%>
+
+
