@@ -1,3 +1,16 @@
 <h1>the band is:</h1>
 <%= @events["title"] %>
-<%
+<div>
+<%= @low["lowest_price"] %>
+</div>
+<div>
+<%= form_tag "/bids", method: :post do %>
+</div>
+
+<%= label_tag :bid, "place your bid "   %>
+<%= text_field_tag :bid %>
+
+ <%= submit_tag "Submit" %>
+ <% end %>
+
+

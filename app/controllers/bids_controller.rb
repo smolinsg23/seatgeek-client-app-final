@@ -1,5 +1,7 @@
 class BidsController < ApplicationController
   def index 
+    @bid = Bid.all
+    end
     render 'index.html.erb'
 end
 
@@ -21,7 +23,6 @@ def create
    flash[:success] = "Contact created."
       redirect_to "/bids/#{@bid.id}"
     end
-end 
 def update
      @bid = Bid.find_by(id: params[:id])
 
