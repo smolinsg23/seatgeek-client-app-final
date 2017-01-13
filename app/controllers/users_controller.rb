@@ -5,6 +5,11 @@ class UsersController < ApplicationController
     render 'new.html.erb'
   end
 
+  def show
+      @bids = Bid.where(user_id: current_user.id)
+    render 'show.html.erb'
+  end
+
   def create
     user = User.new(
     user_name: params[:user_name],

@@ -1,18 +1,146 @@
+<br>
+<br>
+<br>
+<br>
 
-<h1> Events near you </h1>
+  <section class="wrapper">
+    <div class="divider_border"></div>
 
-<%= form_tag '/events', method: :get do %>
-<%= label_tag :title %>
-<%= text_field_tag :title %>
-<%= submit_tag "Submit" %>
-<% end %>
+    <div class="container">
 
-<%@a.each do |event|%>
-   <p>  <%= event["title"] %> <%= event["datetime_local"]%></p>
-   <a href="/events/<%=event["id"]%>">Go to this event</a>
-  
-   <%end%>
+      <div class="main_title">
+        <h2><span>Events</span> Near You</h2>
+        <p>Quisque at tortor a libero posuere laoreet vitae sed arcu. Curabitur consequat.</p>
+      </div>
 
+      <%= form_tag '/events', method: :get do %>
+        <%= label_tag :title %>
+        <%= text_field_tag :title %>
+        <%= submit_tag "Submit" %>
+      <% end %>
 
+      <div class="row">
+        <% @a.each do |event| %>
+        <div class="col-md-4 col-sm-6 wow fadeIn animated" data-wow-delay="0.2s">
+          <div class="img_wrapper">
+            <div class="ribbon">
+              <span>Popular</span>
+            </div>
+            <div class="price_grid">
+              <sup>$</sup>23
+            </div>
+            <div class="img_container">
+              <a href="/events/<%=event["id"]%>">
+                <img src="/img/tour_list_1.jpg" width="800" height="533" class="img-responsive" alt="">
+                <div class="short_info">
+                  <h3><%= event["title"] %></h3>
+                  <em>Duration 45 mins</em>
+                  <p>
+                    A quam morbi ut arcu, eget neque molestie, ullamcorper congue pharetra, hendrerit odio consectetuer.
+                  </p>
+                  <div class="score_wp">Superb
+                    <div class="score">7.5</div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <!-- End img_wrapper -->
+        </div>
+        <% end %>
 
+      </div>
+      <!-- End row -->
 
+      <div class="main_title_2">
+        <h3>View other <span>popular</span> tours</h3>
+        <p>Quisque at tortor a libero posuere laoreet vitae sed arcu. Curabitur consequat.</p>
+      </div>
+      <div class="row list_tours">
+        <div class="col-sm-6">
+          <h3>New Tours</h3>
+          <ul>
+            <li>
+              <div>
+                <a href="detail-page.html">
+                  <figure><img src="/img/thumb_tabs_1.jpg" alt="thumb" class="img-rounded" width="60" height="60">
+                  </figure>
+                  <h4>Adipisci voluptatum ea</h4>
+                  <small>Duration 1hr 20 minutes</small>
+                  <span class="price_list">$23</span>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <a href="detail-page.html">
+                  <figure><img src="/img/thumb_tabs_2.jpg" alt="thumb" class="img-rounded" width="60" height="60">
+                  </figure>
+                  <h4>Splendide suscipiantur</h4>
+                  <small>Duration 1hr 20 minutes</small>
+                  <span class="price_list">$23</span>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <a href="detail-page.html">
+                  <figure><img src="/img/thumb_tabs_3.jpg" alt="thumb" class="img-rounded" width="60" height="60">
+                  </figure>
+                  <h4>Vide omnium perpetua</h4>
+                  <small>Duration 1hr 20 minutes</small>
+                  <span class="price_list">$23</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <h3>Special offers</h3>
+          <ul>
+            <li>
+              <div>
+                <a href="detail-page.html">
+                  <figure><img src="/img/thumb_tabs_4.jpg" alt="thumb" class="img-rounded" width="60" height="60">
+                  </figure>
+                  <h4>Quo quidam vidisse</h4>
+                  <small>Duration 1hr 20 minutes</small>
+                  <span class="price_list"><em>$23</em>$19</span>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <a href="detail-page.html">
+                  <figure><img src="/img/thumb_tabs_5.jpg" alt="thumb" class="img-rounded" width="60" height="60">
+                  </figure>
+                  <h4>Integre alterum</h4>
+                  <small>Duration 1hr 20 minutes</small>
+                  <span class="price_list"><em>$23</em>$19</span>
+                </a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <a href="detail-page.html">
+                  <figure><img src="/img/thumb_tabs_6.jpg" alt="thumb" class="img-rounded" width="60" height="60">
+                  </figure>
+                  <h4>Tation mollis appetere</h4>
+                  <small>Duration 1hr 20 minutes</small>
+                  <span class="price_list"><em>$23</em>$19</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      <!-- End row -->
+
+      <p class="text-center add_bottom_45">
+        <a href="grid.html" class="btn_1">Explore all tours (24)</a>
+      </p>
+
+    </div>
+  </section>

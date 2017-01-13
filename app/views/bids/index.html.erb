@@ -1,19 +1,11 @@
 <section>
       <div class="row">
 
-        <% @bid.each do |bid| %>
-
-          <div class="col-sm-4">
-            <div class="product_single">
-              <p>event: <%= bid.event_id %></p>
-              <p>Price: <%= bid.bid %></p>
-              
-        
-            </div>
-          </div>
+        <% @bids.each do |bidd| %>
+              <p>event: <%= bidd.event_id %></p>
+              <p>Price: <%= bidd.bid %></p>
+            
         <% end %>
-
       </div>
     </section>
 
-Contact GitHub API Training Shop Blog About

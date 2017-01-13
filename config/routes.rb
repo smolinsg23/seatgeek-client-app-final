@@ -5,14 +5,18 @@ Rails.application.routes.draw do
   get  '/events' => 'events#index'
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
+  get '/users/:id' => 'users#show'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
-  get '/signout' => 'sessions#destroy'
+  get '/logout' => 'sessions#destroy'
+
   get '/bids' => 'bids#index'
   get '/bids/new' =>'bids#new'
-  post '/bids' => 'bids#create'
-  get '/bids/:id' => 'bids#show'
-  get '/bids/:id/edit' => 'bids#edit'
+  post '/bids' => 'bids#create' #@bid = Bid.new
+  get '/bids/:id' => 'bids#show' #@bid = Bid.find_by(id: params[:id])
+  get '/bids/:id/edit' => 'bids#edit' 
   patch '/bids/:id' => 'bids#update'
   delete '/bids/:id' => 'bids#destroy'
+
+  get '/pages' => 'pages#index'
 end

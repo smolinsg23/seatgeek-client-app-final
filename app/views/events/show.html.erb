@@ -1,16 +1,45 @@
+<br>
+<br>
+<br>
+<br>
 <h1>the band is:</h1>
 <%= @events["title"] %>
 <div>
+<br>
+<br>
+<br>
 <%= @low["lowest_price"] %>
+<br>
+<br>
+<br>
 </div>
 <div>
+  </div>
 <%= form_tag "/bids", method: :post do %>
-</div>
+  <div>
+  <%= label_tag :bid, "place your bid "   %>
+  <%= text_field_tag :bid %>
+  </div>
+  <div>
+  <%= label_tag :event %>
+  <%= text_field_tag :event_id, params[:id] %>
+  </div>
 
-<%= label_tag :bid, "place your bid "   %>
-<%= text_field_tag :bid %>
+  <div>
+  <%= label_tag :user_id %>
+  <%= text_field_tag :user_id %>
+  </div>
 
- <%= submit_tag "Submit" %>
- <% end %>
+  <div>
+  <%= label_tag :lowest_price %>
+  <%= text_field_tag :lowest_price %>
+  </div>
+   <%= submit_tag "Submit" %>
+   <br>
+   <br>
+   <br>
+   <br>
+ 
+<% end %>
 
 

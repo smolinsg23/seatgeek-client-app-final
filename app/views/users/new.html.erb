@@ -1,4 +1,6 @@
-
+<br>
+<br>
+<br>
 <h1>Signup!</h1>
 <%= form_tag '/users', method: :post do  %>
   <div>
@@ -14,4 +16,5 @@
     <%= password_field_tag :password_confirmation %>
   </div>
   <%= submit_tag "Submit" %>
+  redirect_to "/"
 <% end %>
