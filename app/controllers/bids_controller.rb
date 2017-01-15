@@ -22,7 +22,7 @@ class BidsController < ApplicationController
   def create 
     #@bid?
     #seatgeek id 
-    @bidd = Bid.new(event_id: params[:event_id], user_id: params[:user_id], bid: params[:bid], lowest_price: params[:lowest_price])
+    @bidd = Bid.new(event_id: params[:event_id], user_id: session[:user_id], bid: params[:bid], lowest_price: params[:lowest_price])
    
         
      if session[:user_id] == current_user.id
