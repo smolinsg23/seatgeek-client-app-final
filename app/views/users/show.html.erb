@@ -1,12 +1,18 @@
+  <br><br><br><br><br><br><br><br><br>
   <br>
   <br>
   <br>
   <br>
   <br>
+  <% @bidds.each do |a| %>
+              <p>event: <%= a.event_id %></p>
+              <p>Price: <%= a.bid %></p>
+              <p> lowest: <%= a.lowest_price %> </p>
+            
+        <% end %>
   <br>
-  <%=@bids%>
   <br>
   <br>
   <br>
   <br>
-  <br>
+  <br><br><br><br><br><br><br><br>

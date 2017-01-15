@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-      @bids = Bid.where(user_id: current_user.id)
+      @bidds = Bid.where(user_id: current_user.id)
     render 'show.html.erb'
   end
 

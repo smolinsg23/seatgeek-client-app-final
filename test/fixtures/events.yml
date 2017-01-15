@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  sg_id: 1
-  lowest_price: 1
-
-two:
-  sg_id: 1
-  lowest_price: 1

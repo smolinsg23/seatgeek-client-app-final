@@ -1,4 +1,4 @@
 class Bid < ApplicationRecord
   belongs_to :user
-  belongs_to :event
+  has_many :buy_now_bids
 end

@@ -1,18 +1,18 @@
 class BidsController < ApplicationController
   def index 
-    @bids = Bid.all
+    @bidds = Bid.all
     render 'index.html.erb'
   end
 
   def show
     #@bid?
-    @bids = Bid.find_by(id: params[:id])
+    @bidds = Bid.find_by(id: params[:id])
   end
 
 
 
   def new
-    @bids = Bid.new 
+    @bidd = Bid.new 
     if current_user
       render 'new.html.erb'
     else
@@ -22,36 +22,35 @@ class BidsController < ApplicationController
   def create 
     #@bid?
     #seatgeek id 
-    @bid = Bid.new(event_id: params[:event_id], user_id: params[:user_id], bid: params[:bid], lowest_price: params[:lowest_price])
-    @bid.save
-    redirect_to "/users/#{current_user.id}"
+    @bidd = Bid.new(event_id: params[:event_id], user_id: params[:user_id], bid: params[:bid], lowest_price: params[:lowest_price])
+   
         
-     #if session[:user_id] == current_user.id
-      # @bids.save
-       #flash[:success] = "bid created."
-       #redirect_to "/users/#{id}"
-    #else
-    #   flash[:warning] = 'please sign in'
-    #   redirect_to '/login'
-    # end
+     if session[:user_id] == current_user.id
+       @bidd.save
+       flash[:success] = "bid created."
+       redirect_to "/users/#{current_user.id}"
+    else
+       flash[:warning] = 'please sign in'
+       redirect_to '/login'
+     end
   end
   def update
-    @bids = Bid.find_by(id: params[:sg_id])
+    @bidds = Bid.find_by(id: params[:sg_id])
        
 
-       #@bids.first_name = params[:event_id]
-       #@bids.first_name = params[:sg_id]
+       #@bidds.first_name = params[:event_id]
+       #@bidds.first_name = params[:sg_id]
 
-       @bids.user_id = params[:user_id]
-       @bids.bid = params[:bid]
-       @bids.lowest_price = params[:lowest_price]
-       @bids.save
+       @bidds.user_id = params[:user_id]
+       @bidds.bid = params[:bid]
+       @bidds.lowest_price = params[:lowest_price]
+       @bidds.save
        flash[:success] = "Bid updated."
-       redirect_to "/users/#{@user.id}"
+       redirect_to "/users/#{id}"
   end
   def destroy
-   @bids = Bid.find_by(id: params[:id])
-   @bids.destroy
+   @bidds = Bid.find_by(id: params[:id])
+   @bidds.destroy
    flash[:success] = "Contact deleted."
    redirect_to "/"
   end
