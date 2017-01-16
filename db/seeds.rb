@@ -14,7 +14,14 @@ name.each do |name|
   user.save
   3.times do 
     Bid.create(user_id: user.id, event_id: event_ids.sample, bid: rand(1..100), lowest_price: rand(1..100))
-
-  end
+    
+3.times do
+ Buy_now_bid.create(bid_id: bid.id, lowest_price: lowest_price, average_price: rand(1..100))
 end
+end
+end
+
+
+
+  
 
