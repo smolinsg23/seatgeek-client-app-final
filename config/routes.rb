@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   delete '/bids/:id' => 'bids#destroy'
 
   get '/pages' => 'pages#index'
+  
 end
