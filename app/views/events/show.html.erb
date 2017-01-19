@@ -17,27 +17,18 @@
   </div>
 <%= form_tag "/bids", method: :post do %>
   <div>
-  <%= label_tag :bid, "place your bid "   %>
-  <%= text_field_tag :bid %>
+    <%= label_tag :bid, "place your bid "   %>
+    <%= text_field_tag :bid %>
   </div>
   <div>
-  <% label_tag :event %>
-  <%= hidden_field_tag :event_id, params[:id] %>
+    <% label_tag :event %>
+    <%= hidden_field_tag :event_id, params[:id] %>
   </div>
- 
-
-
-
   <div>
-  <%= label_tag :lowest_price %>
-  <%= hidden_field_tag :lowest_price, @low["lowest_price"] %>
+    <%= label_tag :lowest_price %>
+    <%= hidden_field_tag :lowest_price, @low["lowest_price"] %>
   </div>
-   <%= submit_tag "Submit" %>
-   <br>
-   <br>
-   <br>
-   <br>
- 
+  <%= submit_tag "Submit" %>
 <% end %>
 
 

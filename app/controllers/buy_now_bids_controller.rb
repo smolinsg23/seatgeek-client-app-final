@@ -10,4 +10,10 @@ class BuyNowBidsController < ApplicationController
        redirect_to '/login'
      end
      end
+     def self.price_check
+      @price = Buy_now_bid.find_by(bid_id: params[:bid_id])
+      if Buy_now_bid.lowest_price == bid.bid
+        puts "hello"
+      end
+
    end
