@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   get '/bids/:id/edit' => 'bids#edit' 
   patch '/bids/:id' => 'bids#update'
   delete '/bids/:id' => 'bids#destroy'
-
+get '/alerts' => 'alerts#sendmessage'
   get '/pages' => 'pages#index'
+  get '/bids' => 'bids#match'
   
 end

@@ -14,7 +14,22 @@ class ApplicationController < ActionController::Base
       redirect_to "/"
     end
   end
+
+#   private
+ 
+#     def send_message(phone_number, alert_message)
+#       account_sid = "AC5514246ab3ee29038c5ce49425d123ea"
+# auth_token = "386d158bb16c58248d0412ba8965dd92"
+#       twilio_number = "+13126354511"
+#       @client = Twilio::REST::Client.new account_sid, auth_token
+
+#       @client.messages.create(
+#         from: twilio_number,
+#         to:   phone_number,
+#         body: alert_message)
+#end
 end
+
 
 
 
