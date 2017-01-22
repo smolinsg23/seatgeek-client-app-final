@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170115062603) do
+ActiveRecord::Schema.define(version: 20170122051644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170115062603) do
     t.integer  "lowest_price"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "saved_bid"
   end
 
   create_table "buy_now_bids", force: :cascade do |t|
@@ -37,6 +38,7 @@ ActiveRecord::Schema.define(version: 20170115062603) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "phone_number"
   end
 
 end

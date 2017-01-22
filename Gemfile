@@ -40,6 +40,10 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem 'chartkick'
+  gem 'groupdate'
+  gem 'hightop'
+  gem 'active_median'
   gem "pry-rails"
   gem 'meta_request'
   gem 'better_errors'

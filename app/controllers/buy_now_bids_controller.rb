@@ -15,3 +15,4 @@ class BuyNowBidsController < ApplicationController
       #  if Buy_now_bid.lowest_price == bid.bid
       #    puts "hello"
       #  end
+end

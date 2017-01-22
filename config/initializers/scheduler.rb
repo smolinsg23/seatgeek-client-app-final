@@ -11,20 +11,23 @@
           puts "*" * 50
            # @price = BuyNowBid.find_by(bid_id: params[:bid_id])
           @events = Unirest.get("https://api.seatgeek.com/2/events/#{id}?&client_id=NjQwNTEzMXwxNDgxNDkxODI1").body
+           
           if @events["stats"]
             @low = @events["stats"]["lowest_price"] || 0
             @avg = @events["stats"]["average_price"] || 0
             BuyNowBid.create(bid_id: bid.id, lowest_price: @low , average_price: @avg)
 
             if @low <= bid.bid
-              send_message("+13125501444", "Lowest price matched! Buy your ticket now!")
+              bid.saved_bid = bid.bid
+              send_message("+13125501444", "Lowest price matched for #{@events["title"]} ! Buy your ticket now for #{bid.saved_bid}!")
+              # bid.bid = saved_bid.bid
               bid.bid = 0
               bid.save
-            end
+            
 
-          else
-            puts 'problem with @events?'
-            p @events
+          # else
+          #   puts 'problem with @events?'
+          #   p @events
           end
 
           
@@ -35,7 +38,7 @@
 
  def send_message(phone_number, alert_message)
     account_sid = "AC5514246ab3ee29038c5ce49425d123ea"
- auth_token = "386d158bb16c58248d0412ba8965dd92"
+ auth_token = "61b8cf3f31a88b613aa088f78bc0e47b"
 
         @client = Twilio::REST::Client.new account_sid, auth_token
         @twilio_number = "+13126354511" 
@@ -46,3 +49,4 @@
         )
         puts message.to
       end
+end

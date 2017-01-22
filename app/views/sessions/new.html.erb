@@ -2,11 +2,16 @@
 <br>
 <br>
 <br>
+
+<div class="well">
+
 <h1>Login</h1>
 <%= form_tag '/login', method: :post do %>
+
 <br>
 <br>
 <br>
+
   <div>
     <%= label_tag :user_name %>
     <%= text_field_tag :user_name %>
@@ -19,5 +24,6 @@
   </div>
   <br><br>
   <%= submit_tag "Submit" %>
+  </div> 
 <% end %>
 
