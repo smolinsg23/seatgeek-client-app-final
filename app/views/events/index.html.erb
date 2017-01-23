@@ -9,20 +9,29 @@
     <div class="divider_border"></div>
 
     <div class="container">
-
       <div class="main_title">
         <h2><span>Events</span> Near You</h2>
         <p>Quisque at tortor a libero posuere laoreet vitae sed arcu. Curabitur consequat.</p>
       </div>
 
       <%= form_tag '/events', method: :get do %>
-        <%= label_tag :title %>
-        <%= text_field_tag :title %>
+        <div>
+          <%= label_tag :title, "Search by title: " %>
+          <%= text_field_tag :title %>
+        </div>
+        <div>
+          <%= label_tag :city, "Or search by city: " %>
+          <%= text_field_tag :city %>
+
+          <%= label_tag :radius, "Radius: " %>
+          <%= text_field_tag :radius %>
+        </div>
         <%= submit_tag "Submit" %>
       <% end %>
 
       <div class="row">
         <% @a.each do |event| %>
+       
         <div class="col-md-4 col-sm-6 wow fadeIn animated" data-wow-delay="0.2s">
           <div class="img_wrapper">
             <div class="ribbon">
@@ -33,7 +42,15 @@
             </div>
             <div class="img_container">
               <a href="/events/<%=event["id"]%>">
-                <img src="/img/tour_list_1.jpg" width="800" height="533" class="img-responsive" alt="">
+               <% if event["performers"][0]["image"].present? %>
+               <div>
+                <img src= "<%=event["performers"][0]["image"]%>"  width="800" height="533" class="img-responsive" alt="">
+                </div>
+              <% else %>
+              <div>
+                <img src= "/assets/coming_soon.png"  width="800" height="533" class="img-responsive" alt="">
+                </div>
+              <% end %>
                 <div class="short_info">
                   <h3><%= event["title"] %></h3>
                   <em>Duration 45 mins</em>
@@ -49,6 +66,7 @@
           </div>
           <!-- End img_wrapper -->
         </div>
+
         <% end %>
 
       </div>

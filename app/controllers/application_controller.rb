@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def send_message(phone_number, alert_message)
     account_sid = "AC5514246ab3ee29038c5ce49425d123ea"
- auth_token = "61b8cf3f31a88b613aa088f78bc0e47b"
+ auth_token = "a8fe7cd1270f98e01850d93602d87a74"
 
         @client = Twilio::REST::Client.new account_sid, auth_token
         @twilio_number = "+13126354511" 

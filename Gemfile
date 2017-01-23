@@ -8,6 +8,7 @@ gem 'pg', '~> 0.18'
 gem 'seatgeek', '~> 1.0'
 # Use Puma as the app server
 gem 'unirest'
+
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -20,6 +21,10 @@ gem 'coffee-rails', '~> 4.2'
 gem "awesome_print", require:"ap"
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'chartkick'
+gem 'groupdate'
+gem 'hightop'
+gem 'active_median'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -40,10 +45,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'chartkick'
-  gem 'groupdate'
-  gem 'hightop'
-  gem 'active_median'
+  
   gem "pry-rails"
   gem 'meta_request'
   gem 'better_errors'

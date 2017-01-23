@@ -1,0 +1,7 @@
+<br>
+<br>
+<br>
+<% Bid.all.each do |bid| %>
+  <h1>Bid <%= bid.id %></h1>
+  <%= buy_now_bid_over_time(bid.id) %>
+<% end %>

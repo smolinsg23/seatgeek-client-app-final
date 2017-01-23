@@ -1,5 +1,6 @@
 <section>
       <div class="row">
+     <%= bar_chart @bidds.group(:bid).count %>
 
         <% @bidds.each do |bidd| %>
               <p>event: <%= bidd.event_id %></p>

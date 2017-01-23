@@ -17,7 +17,26 @@ Rails.application.routes.draw do
   get '/bids/:id/edit' => 'bids#edit' 
   patch '/bids/:id' => 'bids#update'
   delete '/bids/:id' => 'bids#destroy'
-
   get '/pages' => 'pages#index'
+  get '/stats' => 'statistics#index'
   
+  resources :charts, only: [] do
+    collection do 
+      get 'buy_now_bid_over_time'
+  end
 end
+  
+
+  
+  namespace :api do
+    namespace :v1 do
+      get '/users/:id' => 'users#show'
+       get '/bids' => 'bids#index'
+       get '/buy_now_bids' => 'buy_now_bids#index'
+
+    end
+  end
+end
+
+  
+
