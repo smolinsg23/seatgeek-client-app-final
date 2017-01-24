@@ -1,21 +1,182 @@
+
+
+
 <br><br><br><br><br><br><br><br><br>
+
   <br>
   <br>
   <br>
   <br>
   <br>
+
+  <%= content_tag :div, class: "bids", data: {bids: @bidds} do %>
+  <% end %>
+    <%= content_tag :div, class: "buys", data: {buys: @buys} do %>
+  <% end %>
+   <!-- when this changes: the bids oh with the update action your saying -->
  ! <% @bidds.each do |a| %>
+
+ <div 
+  class="chart-container" 
+  style="height: 400px; min-width: 600px"
+  data-buy-id="<%= a.id %>" 
+  data-bid="<%= a.bid %>" 
+></div>
+
               <p>event: <%= a.event_id %></p>
               <p>Price: <%= a.bid %></p>
               <p> lowest: <%= a.lowest_price %> </p>
               <%= a.id %>
-              
-            
+
+
+
+
+
+          <h1> edit your bid? </h1>
+
+        <%= form_tag "/bids/#{a.id}", method: :patch do %>
+
+          <div>
+            <%= label_tag :bid %>
+            <%= text_field_tag :bid, a.bid %>
+          </div>
+          
+           <div>
+  <%= submit_tag "Submit" %>
+  </div>
+            <%end%>
         <% end %>
-        -> 
+        
   <br>
   <br>
   <br>
   <br>
   <br>
   <br><br><br><br><br><br><br><br>
+
+
+<% content_for :javascript do %>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script type='text/javascript'>
+
+  $(function () { 
+
+    // you need to find out how you can make these change
+    // thats the difficult part for me, i dont know how rails does that
+    // in plain js we would call it an observable, im atyhink i know does that help 
+    // not really im afraid, i think that's to update an object in the database
+    // what you need to find out is how you can  __bind__ the BuyNow.all()
+    // to the variables below, i dont know how thats done in rails
+    // i would try to ask the oh bids have many buynowbids so you can call bids.Buynowbids.lowest price or something like that not sure if that helps
+    // i think you're looking in the right spot, but it's something i would ask in your clas first, also it's 2.20 am right now and I really need to go :) understood when are you free tommorow? 
+    // not tomorrow, but wednesday I'm available, usually from 6pm to 2-3am gmt+1
+    // but you can send me a message before then and i can do some research ok would i have to book another session or your willing to help with these two things and include it on this session?
+    // i'm afraid that would be. new session, i've already spent more understood mate
+// no problem, good luck with your class
+    // appreciate your time very much thank you again sir
+    var my_bids = $('.bids').data('bids');
+    var my_buys = $('.buys').data('buys');
+
+    function buildChart(container, bid_id, bid_value) {
+        return Highcharts.stockChart({
+
+          chart: {
+            renderTo: container
+          },
+
+        rangeSelector: {
+            selected: 4
+        },
+
+        yAxis: {
+            labels: {
+                formatter: function () {
+                    return (this.value > 0 ? ' + ' : '') + this.value;
+                }
+            },
+            plotLines: [{
+                value: bid,
+                color: 'green',
+                dashStyle: 'shortdash',
+                width: 2,
+                label: {
+                    text: 'Bid Value ' + bid_value
+                }
+            }]
+        },
+
+        plotOptions: {
+            series: {
+                showInNavigator: true
+            }
+        },
+
+        tooltip: {
+            pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b><br/>',
+            valueDecimals: 2,
+            split: true
+        },
+
+        series: [
+          {
+            name: 'Average Price',
+            data: filter(my_buys, bid_id, 'average_price')
+          },
+          {
+            name: 'Lowest Price',
+            data: filter(my_buys, bid_id, 'lowest_price')
+          }
+        ]
+    });
+    }
+
+    var containers = $('.chart-container');
+
+    for (var i = 0; i < containers.length; i++) {
+      var bid = parseInt($(containers[i]).attr('data-bid'));
+      var id = parseInt($(containers[i]).attr('data-buy-id'));
+      buildChart(containers[i], id, bid);
+    }
+
+    //var chart = buildChart('container', id, bid);
+
+    function compare(a,b) {
+
+        if (a[0] < b[0]) {
+            return -1;
+        }
+        if (a[0] > b[0]) {
+            return 1;
+        }
+        return 0;
+    }
+
+    function filter(data, id, valueSelector) {
+        return data.filter(x => x.bid_id === id).map(x => [new Date(x.created_at).getTime(), x[valueSelector]]).sort(compare)
+    }
+
+    $('#rerender').on('click', function() {
+
+      // with these two functions you can update a chart
+      // to get real time going, you would either
+      // 1. create a setinterval function, then everytime yoget new data call thee two function, but i dont know what the ruby way to do that is
+      // 2. a real real time connection using something like socket io it would have to be done in js or a framework of js bcuz you need js to not hae to refresh im not sure how to do that
+      // I can help you with it, but i need to do some research on rails first
+      // in plain js without rails it would have been a breeze to show you how
+      // with rails not so much ya im not sure appreciate it thanks mate in order to update do i have to call the function somewhere else or is all set?
+
+      // no you need to create a new click handler, and it that click handler
+      // you need to update the my_bids and the my_buynows
+
+        chart.series[0].update({
+            data: filter(bids, 224, 'average_price')
+        });
+        chart.series[1].update({
+            data: filter(bids, 224, 'lowest_price')
+        });
+    });
+
+
+  });
+  </script>
+  <%end%>

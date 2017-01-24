@@ -22,6 +22,7 @@ class BidsController < ApplicationController
   end
 
   def create 
+
     @bidd = Bid.new(event_id: params[:event_id], user_id: session[:user_id], bid: params[:bid], lowest_price: params[:lowest_price])    
     if session[:user_id] == current_user.id
       @bidd.save
@@ -33,13 +34,15 @@ class BidsController < ApplicationController
       flash[:warning] = 'please sign in'
       redirect_to '/login'
     end
+    @events = Unirest.get("https://api.seatgeek.com/2/events/#{id}?&client_id=NjQwNTEzMXwxNDgxNDkxODI1")
   end
 
   def update
-    @bidds = Bid.find_by(id: params[:event_id])
+    @bidds = Bid.find_by(id: params[:id])
     #@bidds.first_name = params[:event_id]
     #@bidds.first_name = params[:sg_id]
-    @bidds.user_id = params[:user_id]
+    @bidds.event_id = params[:event_id]
+    @bidds.user_id = session[:user_id]
     @bidds.bid = params[:bid]
     @bidds.lowest_price = params[:lowest_price]
     @bidds.save

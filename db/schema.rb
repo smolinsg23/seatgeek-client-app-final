@@ -24,7 +24,8 @@ ActiveRecord::Schema.define(version: 20170122051644) do
     t.datetime "updated_at",   null: false
     t.integer  "saved_bid"
   end
-
+#this?
+#yes, I need to get this in the same way we just did with bids ok
   create_table "buy_now_bids", force: :cascade do |t|
     t.integer  "bid_id"
     t.integer  "lowest_price"
