@@ -26,7 +26,7 @@ class BidsController < ApplicationController
     @bidd = Bid.new(event_id: params[:event_id], user_id: session[:user_id], bid: params[:bid], lowest_price: params[:lowest_price])    
     if session[:user_id] == current_user.id
       @bidd.save
-      send_message("+13125501444", "test")
+      send_message("+13125501444", "your bid has been created sit back while we find you your ticket")
       restart_jobs
       flash[:success] = "bid created."
       redirect_to "/users/#{current_user.id}"
@@ -34,7 +34,7 @@ class BidsController < ApplicationController
       flash[:warning] = 'please sign in'
       redirect_to '/login'
     end
-    @events = Unirest.get("https://api.seatgeek.com/2/events/#{id}?&client_id=NjQwNTEzMXwxNDgxNDkxODI1")
+    
   end
 
   def update
@@ -48,13 +48,13 @@ class BidsController < ApplicationController
     @bidds.save
 
     flash[:success] = "Bid updated."
-    redirect_to "/users/#{id}"
+    redirect_to "/users/#{current_user.id}"
   end
 
   def destroy
     @bidds = Bid.find_by(id: params[:id])
     @bidds.destroy
-    flash[:success] = "Contact deleted."
+    flash[:success] = "bid deleted."
     redirect_to "/"
   end
 

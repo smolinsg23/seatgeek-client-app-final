@@ -1,9 +1,9 @@
    unless defined?(Rails::Console) || File.split($0).last == 'rake'
      s = Rufus::Scheduler.singleton
-     s.every '2m', :tag => 'main_process' do
+     s.every '10m', :tag => 'main_process' do
      Rails.logger.info "hello, it's #{Time.now}"
      Rails.logger.flush
-     Bid.all.each do |bid|
+     Bid.all.each do |bid| 
        id = bid.event_id
        puts "*" * 50
        puts bid.id
@@ -27,7 +27,7 @@
           # else
           #   puts 'problem with @events?'
           #   p @events
-          end
+           end
 
           
        end
