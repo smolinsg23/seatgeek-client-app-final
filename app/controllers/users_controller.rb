@@ -6,6 +6,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    sort_attribute = params[:sort] || ""
+     sort_order = params[:sort_order] || "asc"
+    @bidds = Bid.order(sort_attribute => sort_order)
+
       @buys = BuyNowBid.all
       @bidds = Bid.where(user_id: current_user.id)
     render 'show.html.erb'

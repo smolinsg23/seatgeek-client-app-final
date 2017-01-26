@@ -38,7 +38,10 @@
               <span>Popular</span>
             </div>
             <div class="price_grid">
-              <sup>$</sup>23
+              <sup>$</sup>
+              <% if event["stats"]["lowest_price"].present?%>
+                <%=event["stats"]["lowest_price"]%>
+              <%end%>
             </div>
             <div class="img_container">
               <a href="/events/<%=event["id"]%>">
@@ -53,6 +56,7 @@
               <% end %>
                 <div class="short_info">
                   <h3><%= event["title"] %></h3>
+                  <h4> <%= event["datetime_local"]%> </h4>
                   <em>Duration 45 mins</em>
                   <p>
                     A quam morbi ut arcu, eget neque molestie, ullamcorper congue pharetra, hendrerit odio consectetuer.

@@ -29,6 +29,7 @@
   <link href="/css/responsive.css" rel="stylesheet">
   <link href="/css/menu.css" rel="stylesheet">
   <link href="/css/icon_fonts/css/all_icons.min.css" rel="stylesheet">
+  <link href="/css/magnific-popup.min.css" rel="stylesheet">
 
   <!-- YOUR CUSTOM CSS -->
   <link href="/css/custom.css" rel="stylesheet">
@@ -64,15 +65,10 @@
       <div id="top_line">
         <div class="container">
           <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <a href="tel://004542344599" id="phone_top">0045 043204434</a><span id="opening">Mon - Sat 8.00/18.00</span>
-            </div>
+           
             <div class="col-md-6 col-sm-6 hidden-xs">
               <ul id="top_links">
-                <li><a href="wishlist.html" id="wishlist_link">Wishlist</a>
-                </li>
-                <li><a href="#0">PURCHASE THIS TEMPLATE</a>
-                </li>
+                
               </ul>
             </div>
           </div>
@@ -86,7 +82,7 @@
         <div class="row">
           <div class="col-md-3 col-sm-3 col-xs-3">
             <div id="logo_home">
-              <h1><a href="index.html" title="City tours travel template">BesTours Travel&amp;Excursion Multipurpose Template</a></h1>
+              <h1><a href="/" title="City tours travel template">BesTours Travel&amp;Excursion Multipurpose Template</a></h1>
             </div>
           </div>
           <nav class="col-md-9 col-sm-9 col-xs-9">
@@ -97,111 +93,44 @@
             <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
             <div class="main-menu">
               <div id="header_menu">
-                <img src="/img/logo_menu.png" width="145" height="34" alt="Bestours" data-retina="true">
+                <img src="/img/logo_menu.png" width="145" height="34" alt="Agora" data-retina="true">
               </div>
               <a href="#" class="open_close" id="close_in"><i class="icon_set_1_icon-77"></i></a>
               <ul>
                 <li class="submenu">
-                  <a href="javascript:void(0);" class="show-submenu">Home</a>
+                  <a href="javascript:void(0);" class="show-submenu">Concerts</a>
                   <ul>
-                    <li><a href="index.html">Home Video background</a>
-                    </li>
-                    <li><a href="index_2.html">Home Layer Slider</a>
-                    </li>
-                    <li><a href="index_3.html">Home Full Header</a>
-                    </li>
-                    <li><a href="index_4.html">Home Popup</a>
-                    </li>
-                    <li><a href="index_5.html">Home Cookie bar</a>
+                    <li><a href="/">Events near you</a>
                     </li>
                   </ul>
                 </li>
+                <% if current_user %>
                 <li class="submenu">
-                  <a href="javascript:void(0);" class="show-submenu">Tours</a>
+                  <a href="javascript:void(0);" class="show-submenu">Bids</a>
                   <ul>
-                    <li><a href="grid.html">Grid view</a>
+
+                   
+              
+           
+                    <li><a href="/users/<%=current_user.id%>">View your Bids</a>
                     </li>
-                    <li><a href="list.html">List view</a>
-                    </li>
+                    
+                   
                   </ul>
                 </li>
+                <%end%>
+                
+
+                
                 <li>
-                  <a href="about.html">About us</a>
-                </li>
-                <li><a href="faq.html">Faq</a>
-                </li>
-                <li class="submenu">
-                  <a href="javascript:void(0);" class="show-submenu">Other pages</a>
-                  <ul>
-                    <li><a href="index_3.html">Header Version 2</a>
-                    </li>
-                    <li><a href="blog.html">Blog</a>
-                    </li>
-                    <li><a href="blog_post.html">Blog post</a>
-                    </li>
-                    <li><a href="gallery.html">Gallery</a>
-                    </li>
-                    <li><a href="maintenance.html">Mantainance</a>
-                    </li>
-                    <li><a href="profile.html">Team Profile</a>
-                    </li>
-                    <li><a href="/contacts_2.html">Contact 2</a>
-                    </li>
-                    <li><a href="/coming_soon/index.html">Coming soon</a>
-                    </li>
-                    <li><a href="shortcodes.html">Shortcodes</a>
-                    </li>
-                    <li><a href="icon_pack_1.html">Icon pack 1</a>
-                    </li>
-                    <li><a href="icon_pack_2.html">Icon pack 2</a>
-                    </li>
-                    <li><a href="icon_pack_3.html">Icon pack 3</a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="/contacts.html">Contact us</a>
-                </li>
-                <li class="megamenu submenu">
-                  <a href="javascript:void(0);" class="show-submenu-mega">More demos</a>
-                  <div class="menu-wrapper">
-                    <div class="row">
-                      <div class="col-md-4">
-                        <h3>Museum Tours</h3>
-                        <div class="menu-item">
-                          <a href="#"><img src="/img/menu-demo-1.jpg" width="400" height="226" alt="" class="img-responsive">
-                          </a>
-                          <p>
-                            Lorem ipsum dolor sit amet, et cum civibus referrentur, at propriae forensibus qui. Duo aliquip necessitatibus ne.
-                          </p>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <h3>Adventure Tours</h3>
-                        <div class="menu-item">
-                          <a href="#"><img src="/img/menu-demo-2.jpg" width="400" height="226" alt="" class="img-responsive">
-                          </a>
-                          <p>
-                            Lorem ipsum dolor sit amet, et cum civibus referrentur, at propriae forensibus qui. Duo aliquip necessitatibus ne.
-                          </p>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <h3>Travel Tours</h3>
-                        <div class="menu-item">
-                          <a href="#"><img src="/img/menu-demo-3.jpg" width="400" height="226" alt="" class="img-responsive">
-                          </a>
-                          <p>
-                            Lorem ipsum dolor sit amet, et cum civibus referrentur, at propriae forensibus qui. Duo aliquip necessitatibus ne.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <hr class="hidden-xs">
-                    <p class="text-center hidden-xs">
-                      <a href="#" class="btn_outline">MORE DEMOS SOON</a>
-                  </div>
-                  <!-- End menu-wrapper -->
+                <% if current_user %>
+         <li><a href="/logout">Logout</a></li>
+       <% else %>
+         <li><a href="/signup">Signup</a></li>
+         <li><a href="/login">Login</a></li>
+       <% end %>
+                  
+               
                 </li>
               </ul>
             </div>
@@ -225,7 +154,9 @@
 
   
   <!-- End Container -->
-  
+  <div id="preloader">
+    <div data-loader="circle-side"></div>
+  </div>
   <%= yield %>
   <!-- End section -->
 
@@ -320,7 +251,6 @@
   <!-- End Search Menu -->
 
   <!-- COMMON SCRIPTS -->
-  <script src="/js/jquery-2.2.4.min.js"></script>
   <script src="/js/common_scripts_min.js"></script>
   <script src="/assets/validate.js"></script>
   <script src="/js/jquery.tweet.min.js"></script>

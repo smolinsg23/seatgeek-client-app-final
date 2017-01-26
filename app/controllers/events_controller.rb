@@ -7,6 +7,8 @@ class EventsController < ApplicationController
       range = params[:radius] || "20"
       @events = Unirest.get("https://api.seatgeek.com/2/events?sort=datetime_utc.asc&per_page=100&page=5&taxonomies.name=concert&datetime_utc.gt=2017-01-01&geoip=#{city_geoip}&range=#{range}mi&client_id=NjQwNTEzMXwxNDgxNDkxODI1").body
       @low = @events["performers"]
+      
+
     end
     @b = []
     @c = []

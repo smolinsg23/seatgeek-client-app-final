@@ -1,7 +1,7 @@
 <div class = "container">
 
 
-<br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br>
 
   <br>
   <br>
@@ -11,60 +11,72 @@
 
   <%= content_tag :div, class: "bids", data: {bids: @bidds} do %>
   <% end %>
-    <%= content_tag :div, class: "buys", data: {buys: @buys} do %>
+  <%= content_tag :div, class: "buys", data: {buys: @buys} do %>
   <% end %>
-   <!-- when this changes: the bids oh with the update action your saying -->
-  <% @bidds.each do |a| %>
+  <!-- when this changes: the bids oh with the update action your saying -->
 
- <div 
-  class="chart-container" 
-  style="height: 400px; min-width: 600px"
-  data-buy-id="<%= a.id %>" 
-  data-bid="<%= a.bid %>" 
-></div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Collapse</h3>
+      <div class="panel-group" id="accordion">
+  <% @bidds.each_with_index do |a, index| %>
+    
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse-<%= a.id %>"><%= a.event_title %> - <%= a.id %><i class="indicator icon_plus_alt2 pull-right"></i></a>
+      </h4>
+        </div>
+        <div id="collapse-<%= a.id %>" class="panel-collapse collapse">
+          <div class="panel-body">
+            <div class="text-center">
+                <div class="chart-container" style="min-height: 400px; min-width: 600px" data-buy-id="<%= a.id %>" data-bid="<%= a.bid %>" ></div>
 
-              <p>event: <%= a.event_id %></p>
-              
-              <% if a.bid  == 0 %>
-              <p>Price: <%= a.saved_bid %>
-              <%else%>
-              <p>Price: <%= a.bid %></p>
-              <% end %>
-              <p> lowest: <%= a.lowest_price %> </p>
-              <%= a.id %>
-
-
-
-
-
-          <h1> edit your bid? </h1>
-
-        <%= form_tag "/bids/#{a.id}", method: :patch do %>
-
-          <div>
-            <%= label_tag :bid %>
-            <%= text_field_tag :bid, a.bid %>
+                <div class="well">
+                  <p> lowest: <%= a.lowest_price %> </p>
+                  <% if a.bid  == 0 %>
+                    <p>Price: <%= a.saved_bid %></p>
+                  <%else%>
+                    <p>Price: <%= a.bid %></p>
+                  <% end %>
+                  <h3>Edit Your Bid</h3>
+                  <%= form_tag "/bids/#{a.id}", method: :patch do %>
+                    <div>
+                      <%= label_tag :bid %>
+                      <%= text_field_tag :bid, a.bid, placeholder: "Edit Bid" %>
+                    </div>
+                    
+                    <div>
+                      <%= submit_tag "Submit" %>
+                    </div>
+                  <%end%>
+                </div>
+              </div>
           </div>
+        </div>
+      </div>
+
           
-           <div>
-  <%= submit_tag "Submit" %>
+  <% end %>
+      </div>
+
+    </div>
+    <!-- End col-md-12-->
   </div>
-            <%end%>
-        <% end %>
-        
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br><br><br><br><br><br><br><br>
 
 
-<% content_for :javascript do %>
-    <script src="https://code.highcharts.com/stock/highstock.js"></script>
-<script type='text/javascript'>
 
-  $(function () { 
+
+  
+  
+  <br>
+
+
+  <% content_for :javascript do %>
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+  <script type='text/javascript'>
+
+    $(function () { 
 
     // you need to find out how you can make these change
     // thats the difficult part for me, i dont know how rails does that
@@ -83,56 +95,56 @@
     var my_buys = $('.buys').data('buys');
 
     function buildChart(container, bid_id, bid_value) {
-        return Highcharts.stockChart({
+      return Highcharts.stockChart({
 
-          chart: {
-            renderTo: container
-          },
+        chart: {
+          renderTo: container
+        },
 
         rangeSelector: {
-            selected: 4
+          selected: 4
         },
 
         yAxis: { softMin: -1, softMax:1, 
-            labels: {
-                formatter: function () {
-                    return (this.value > 0 ? ' + ' : '') + this.value;
-                }
-            },
-            plotLines: [{
-                value: bid,
-                color: 'green',
-                dashStyle: 'shortdash',
-                width: 2,
-                label: {
-                    text: 'Bid Value ' + bid_value
-                }
-            }]
+          labels: {
+            formatter: function () {
+              return (this.value > 0 ? ' + ' : '') + this.value;
+            }
+          },
+          plotLines: [{
+            value: bid,
+            color: 'green',
+            dashStyle: 'shortdash',
+            width: 2,
+            label: {
+              text: 'Bid Value ' + bid_value
+            }
+          }]
         },
 
         plotOptions: {
-            series: {
-                showInNavigator: true
-            }
+          series: {
+            showInNavigator: true
+          }
         },
 
         tooltip: {
-            pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b><br/>',
-            valueDecimals: 2,
-            split: true
+          pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b><br/>',
+          valueDecimals: 2,
+          split: true
         },
 
         series: [
-          {
-            name: 'Average Price',
-            data: filter(my_buys, bid_id, 'average_price')
-          },
-          {
-            name: 'Lowest Price',
-            data: filter(my_buys, bid_id, 'lowest_price')
-          }
+        {
+          name: 'Average Price',
+          data: filter(my_buys, bid_id, 'average_price')
+        },
+        {
+          name: 'Lowest Price',
+          data: filter(my_buys, bid_id, 'lowest_price')
+        }
         ]
-    });
+      });
     }
 
     var containers = $('.chart-container');
@@ -147,17 +159,17 @@
 
     function compare(a,b) {
 
-        if (a[0] < b[0]) {
-            return -1;
-        }
-        if (a[0] > b[0]) {
-            return 1;
-        }
-        return 0;
+      if (a[0] < b[0]) {
+        return -1;
+      }
+      if (a[0] > b[0]) {
+        return 1;
+      }
+      return 0;
     }
 
     function filter(data, id, valueSelector) {
-        return data.filter(x => x.bid_id === id).map(x => [new Date(x.created_at).getTime(), x[valueSelector]]).sort(compare);
+      return data.filter(x => x.bid_id === id).map(x => [new Date(x.created_at).getTime(), x[valueSelector]]).sort(compare);
     }
 
     $('#rerender').on('click', function() {
@@ -173,16 +185,16 @@
       // no you need to create a new click handler, and it that click handler
       // you need to update the my_bids and the my_buynows
 
-        chart.series[0].update({
-            data: filter(bids, 224, 'average_price')
-        });
-        chart.series[1].update({
-            data: filter(bids, 224, 'lowest_price')
-        });
+      chart.series[0].update({
+        data: filter(bids, 224, 'average_price')
+      });
+      chart.series[1].update({
+        data: filter(bids, 224, 'lowest_price')
+      });
     });
 
 
   });
-  </script>
-  <%end%>
-  </div>
+</script>
+<%end%>
+</div>

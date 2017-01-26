@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+  get '/pages/d' => 'pages#d'
 
   get '/bids' => 'bids#index'
   get '/bids/new' =>'bids#new'
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   get '/bids/:id' => 'bids#show' #@bid = Bid.find_by(id: params[:id])
   get '/bids/:id/edit' => 'bids#edit' 
   patch '/bids/:id' => 'bids#update'
+  get '/pages/blog' => 'pages#blog'
   delete '/bids/:id' => 'bids#destroy'
   get '/pages' => 'pages#index'
   get '/stats' => 'statistics#index'
