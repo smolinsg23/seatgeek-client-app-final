@@ -18,7 +18,7 @@
             BuyNowBid.create(bid_id: bid.id, lowest_price: @low , average_price: @avg)
 
             if @low <= bid.bid
-              send_message("+13125501444", "Lowest price matched for #{@events["title"]} ! Buy your ticket now for #{bid.saved_bid}!")
+              send_message("+13125501444", "Lowest price matched for #{@events["title"]} with a bid id of #{bid.id}, Buy your ticket now for #{bid.saved_bid}!")
               bid.saved_bid = bid.bid
               bid.bid = 0
               bid.save
