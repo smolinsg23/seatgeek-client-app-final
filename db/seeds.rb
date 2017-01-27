@@ -12,11 +12,11 @@ event_ids = [3513168, 3537633, 3537632, 3537634, 3537631, 3513137, 3641138, 3595
 name.each do |name|
   user = User.new(user_name: name, password: 'password')
   user.save
-  3.times do 
+  10.times do 
     Bid.create(user_id: user.id, event_id: event_ids.sample, bid: rand(1..100), lowest_price: rand(1..100))
     
-3.times do
- Buy_now_bid.create(bid_id: bid.id, lowest_price: lowest_price, average_price: rand(1..100))
+100.times do
+ Buy_now_bid.create(bid_id: bid.id, lowest_price: rand(1..1000), average_price: rand(1..1000))
 end
 end
 end

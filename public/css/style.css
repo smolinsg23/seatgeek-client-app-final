@@ -521,7 +521,7 @@ ul#tools_top li a.search-overlay-menu-btn:hover {
 	width: 145px;
 	height: 34px;
 	display: block;
-	background-image: url(../img/logo.png);
+	background-image: url(/img/onlinelogomaker-012617-2139-6835.png);
 	background-repeat: no-repeat;
 	background-position: left top;
 	background-size: 145px 34px;
@@ -533,7 +533,7 @@ only screen and (-o-min-device-pixel-ratio: 2/1),
 only screen and (-webkit-min-device-pixel-ratio: 2),
 only screen and (min-device-pixel-ratio: 2) {
 	#logo_home h1 a {
-		background-image: url(../img/logo_2x.png);
+		background-image: url(/img/onlinelogomaker-012617-2139-6835.png);
 		background-size: 145px 34px;
 	}
 }

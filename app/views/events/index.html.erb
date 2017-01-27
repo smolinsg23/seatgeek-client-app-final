@@ -11,29 +11,37 @@
     <div class="container">
       <div class="main_title">
         <h2><span>Events</span> Near You</h2>
-        <p> <span>Agora</span> Game Set Match</p>
+        <p><span>Game,</span><span> Set,</span><span> Match</span></p>
       </div>
-
-      <%= form_tag '/events', method: :get do %>
-        <div>
-          <%= label_tag :title, "Search by title: " %>
-          <%= text_field_tag :title %>
-        </div>
-        <div>
-          <%= label_tag :city, "Or search by city: " %>
-          <%= text_field_tag :city %>
-
-          <%= label_tag :radius, "Radius: " %>
-          <%= text_field_tag :radius %>
-        </div>
-        <%= submit_tag "Submit" %>
-      <% end %>
+      <div class="well form-inline">
+        <%= form_tag '/events', method: :get do %>
+         
+              <div class="form-group">
+                <%= label_tag :title, "Search by title: " %>
+                <%= text_field_tag :title, "", class: "form-control" %>
+              </div>
+           
+          
+              <div class="form-group">
+                <%= label_tag :radius, "Radius: " %>
+                <%= text_field_tag :radius, "", class: "form-control" %>
+              </div>
+        
+            
+              <div class="form-group">
+                
+                <%= submit_tag "Submit", class: "btn btn-default" %>
+              </div>
+         
+     
+          <% end %>
+      </div>
 
       <div class="row">
         <% @a.each do |event| %>
        
         <div class="col-md-4 col-sm-6 wow fadeIn animated" data-wow-delay="0.2s">
-          <div class="img_wrapper">
+          <div class="img_wrapper event-box">
             <div class="ribbon">
               <span>Popular</span>
             </div>
@@ -58,8 +66,10 @@
                   <h3><%= event["title"] %></h3>
                   <h4> <%= event["datetime_local"]%> </h4>
                   <h5> Playing At: </h5>
-                  <%=event["venue"]["name"] %> in
-                  <%= event["venue"]["city"]  %>
+
+                  <p>
+                    <%=event["venue"]["name"] %> in
+                    <%= event["venue"]["city"]  %>
                   </p>
                   <div class="score_wp">Superb
                     <div class="score">7.5</div>
@@ -75,10 +85,6 @@
 
       </div>
       <!-- End row -->
-
-      
-
-    
-
+     
     </div>
   </section>
