@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get '/pages' => 'pages#index'
   get '/stats' => 'statistics#index'
   get '/buy_now_bids' => 'buy_now_bids#index'
+  get '/new2' => 'users#new2'
   resources :charts, only: [] do
     collection do 
       get 'buy_now_bid_over_time'

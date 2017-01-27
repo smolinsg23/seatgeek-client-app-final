@@ -1,5 +1,6 @@
 
 
+
   <!--[if lte IE 8]>
         <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
         <![endif]-->
@@ -143,14 +144,167 @@
  
   <!-- end container -->
 
-  
-        
-        
-    
-  <!-- End Search Menu -->
 
-  <!-- COMMON SCRIPTS -->
-
-        
-
+<section class="parallax_window_in" data-parallax="scroll" data-image-src="/assets/concert_default.jpg" data-natural-width="1400" data-natural-height="470">
+     <div id="sub_content_in">
+       <div id="animate_intro">
+         <h1>Blog and news</h1>
+         <p>"Usu habeo equidem sanctus no ex melius"</p>
+       </div>
+     </div>
+   </section>
+<div class= "well">
+   <section class="wrapper">
+     <div class="divider_border"></div>
+ 
+     <div class="container">
+ 
+       <div class="row">
+         <div class="col-md-9 add_bottom_15">
+           <div class="bloglist singlepost">
+             <div class="wow fadeIn">
+             <% if @image.present? %>
+               <img alt="" class="img-responsive img-thumbnail" src="<%=@image%>">
+               <%else%>
+               <img alt="" class="img-responsive img-thumbnail" src="/assets/coming_soon.png">
+               <%end%>
+ 
+ 
+               <div class="singlepost_title">
+                 <h4><%= @events["title"] %></h4>
+                  <h3><%= @venue%> - <%= @city %></h3>
+ 
+               </div>
+ 
+ 
+                 
+ 
+               <div class="post-content">
+                 <div class="dropcaps">
+                   <p>Aorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                 </div>
+ 
+                 <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
+               </div>
+               <!-- end post -->
+ 
+             </div>
+           </div>
+           <!-- end single-post -->
+ 
+      
+           <!-- end blog-list -->
+         </div>
+ 
+ 
+         <aside id="sidebar" class="col-md-3">
+           <div class="widget">
+           <div class= "well">
+           <h5> The Current buy now price is:<%= @low["lowest_price"] %> <h5>
+ 
+             <%= form_tag "/bids", method: :post do %>
+                 <div>
+                   <%= label_tag :bid, "place your bid "   %>
+                   <%= text_field_tag :bid, "", class: "form-control" %>
+                 </div>
+                 <div>
+                   <% label_tag :event %>
+                   <%= hidden_field_tag :event_id, params[:id] %>
+                 </div>
+                 <div>
+                   <%= hidden_field_tag :lowest_price, @low["lowest_price"] %>
+                 </div>
+                 <div>
+                   <%= hidden_field_tag :event_title, @events["title"] %>
+                 </div>
+                 <br>
+                 <div>
+                   <%= submit_tag "Submit", class: "btn_1" %>
+                 </div>
+                 <% end %>   
+ </div>
+           </div>
+ 
+           <!-- end widget -->
+ 
+ 
+               </li>
+             </ul>
+             <!-- end blog list -->
+           </div>
+           <!-- end widget -->
+ 
+           
+           <!-- end widget -->
+         </aside>
+         <!-- end sidebar -->
+       </div>
+       <!-- end row -->
+     </div>
+     <!-- End container -->
+   </section>
+   <!-- End section -->
+ 
+   
+     <!-- end banner -->
+    </div>
+ 
+   <div class="row">
+             <div class="col-md-12">
+               <h3>Collapse</h3>
+               <div class="panel-group" id="accordion">
+                 <div class="panel panel-default">
+                   <div class="panel-heading">
+                     <h4 class="panel-title">
+                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Anim reprehenderit?<i class="indicator icon_minus_alt2 pull-right"></i></a>
+                 </h4>
+                   </div>
+                   <div id="collapseOne" class="panel-collapse collapse in">
+                     <div class="panel-body">
+                       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                     </div>
+                   </div>
+                 </div>
+                 <div class="panel panel-default">
+                   <div class="panel-heading">
+                     <h4 class="panel-title">
+                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Parsnip lotus root celery?<i class="indicator icon_plus_alt2 pull-right"></i></a>
+                 </h4>
+                   </div>
+                   <div id="collapseTwo" class="panel-collapse collapse">
+                     <div class="panel-body">
+                       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                     </div>
+                   </div>
+                 </div>
+                 <div class="panel panel-default">
+                   <div class="panel-heading">
+                     <h4 class="panel-title">
+                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Beet greens peanut salad?<i class="indicator icon_plus_alt2 pull-right"></i></a>
+                 </h4>
+                   </div>
+                   <div id="collapseThree" class="panel-collapse collapse">
+                     <div class="panel-body">
+                       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                     </div>
+                   </div>
+                 </div>
+               </div>
+ 
+             </div>
+             <!-- End col-md-12-->
+           </div>
+   <!-- end container -->
+ 
+   
+         
+         
+     
+   <!-- End Search Menu -->
+ 
+   <!-- COMMON SCRIPTS -->
+ 
+         
+ 
+ 
 

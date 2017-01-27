@@ -4,6 +4,9 @@ class UsersController < ApplicationController
   def new
     render 'new.html.erb'
   end
+  def new2
+    render 'new2.html.erb'
+  end
 
   def show
     sort_attribute = params[:sort] || ""
