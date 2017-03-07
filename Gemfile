@@ -8,6 +8,7 @@ gem 'pg', '~> 0.18'
 gem 'seatgeek', '~> 1.0'
 # Use Puma as the app server
 gem 'unirest'
+gem 'rspec-rails', '~> 3.5'
 
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
