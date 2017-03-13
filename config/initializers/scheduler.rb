@@ -2,7 +2,7 @@
 
    unless defined?(Rails::Console) || File.split($0).last == 'rake'
      s = Rufus::Scheduler.singleton
-     s.every '10s', :tag => 'main_process' do
+     s.every '1d', :tag => 'main_process' do
      Rails.logger.info "hello, it's #{Time.now}"
      Rails.logger.flush
      Bid.all.each do |bid| 
