@@ -23,7 +23,7 @@ class BidsController < ApplicationController
 
   def create 
 
-    @bidd = Bid.new(event_id: params[:event_id], user_id: session[:user_id], bid: params[:bid], lowest_price: params[:lowest_price], event_title: params[:event_title])    
+    @bidd = Bid.new(event_id: params[:event_id], user_id: session[:user_id], bid: params[:bid], lowest_price: params[:lowest_price],)    
     if session[:user_id] == current_user.id
       @bidd.save
       send_message("+13125501444", "your bid has been created sit back while we find you your ticket")

@@ -8,7 +8,7 @@ gem 'pg', '~> 0.18'
 gem 'seatgeek', '~> 1.0'
 # Use Puma as the app server
 gem 'unirest'
-gem 'rspec-rails', '~> 3.5'
+
 
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -42,11 +42,19 @@ gem 'bootstrap-sass', '~> 3.3.6'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+   gem 'faker'
+  gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+
   gem "pry-rails"
   gem 'meta_request'
   gem 'better_errors'
