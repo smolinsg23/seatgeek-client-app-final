@@ -10,16 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170125024511) do
+ActiveRecord::Schema.define(version: 20170315024711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bid_event_histories", force: :cascade do |t|
+    t.integer  "bid_event_id"
+    t.decimal  "lowest_price", precision: 5, scale: 2, null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.index ["bid_event_id"], name: "index_bid_event_histories_on_bid_event_id", using: :btree
+  end
+
+  create_table "bid_events", force: :cascade do |t|
+    t.string  "event_id"
+    t.decimal "current_buy_now_price", precision: 5, scale: 2, null: false
+  end
 
   create_table "bids", force: :cascade do |t|
     t.integer  "event_id"
     t.integer  "user_id"
     t.integer  "bid"
-    t.integer  "lowest_price"
+    t.string   "lowest_price"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "saved_bid"

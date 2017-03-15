@@ -23,19 +23,21 @@ class BidsController < ApplicationController
 
   def create 
 
-    @bidd = Bid.new(event_id: params[:event_id], user_id: session[:user_id], bid: params[:bid], lowest_price: params[:lowest_price],)    
+    @bidd = Bid.create!(event_id: params[:event_id], user_id: session[:user_id], bid: params[:bid], lowest_price: params[:lowest_price],)    
     if session[:user_id] == current_user.id
-      @bidd.save
+     
       send_message("+13125501444", "your bid has been created sit back while we find you your ticket")
-      restart_jobs
+         
       flash[:success] = "bid created."
       redirect_to "/users/#{current_user.id}"
+      
     else
       flash[:warning] = 'please sign in'
       redirect_to '/login'
-    end
+    
     
   end
+end
 
   def update
     @bidds = Bid.find_by(id: params[:id])
@@ -57,15 +59,22 @@ class BidsController < ApplicationController
     redirect_to "/"
   end
 
-  def restart_jobs
-    puts 'Stopping rufus'
-    Rufus::Scheduler.singleton.jobs(:tag => 'main_process').each do |job|
-     Rufus::Scheduler.singleton.unschedule(job)
-    end
-    puts 'Starting rufus'
-    load "#{Rails.root}/config/initializers/scheduler.rb"
-  end
-  end
+end
+#     Rufus::Scheduler.singleton.jobs(:tag => 'main_process').each do |job|
+#      Rufus::Scheduler.singleton.unschedule(job)
+#     end
+#     puts 'Starting rufus'
+#     load "#{Rails.root}/config/initializers/scheduler.rb"
+#   end
+# end
+#   def report
+#     HardWorker.perform_async("10","20")
+#     render text: "REQUEST TO GENERATE BIDS ADDED TO QUEUE"
+#   end
 
+
+
+
+ 
 
 

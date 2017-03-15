@@ -1,6 +1,14 @@
 class Bid < ApplicationRecord
    belongs_to :user
   has_many :buy_now_bids
+  scope :not_matched, -> {where("saved_bid IS NULL")}
+  after_create do |bid|
+    BidEvent.find_or_create_by(event_id: bid.event_id, current_buy_now_price: bid.lowest_price)
+
+    
+
+  end
+
   end
 
   #  def rufus
