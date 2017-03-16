@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170315024711) do
+ActiveRecord::Schema.define(version: 20170316045234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,8 +24,9 @@ ActiveRecord::Schema.define(version: 20170315024711) do
   end
 
   create_table "bid_events", force: :cascade do |t|
-    t.string  "event_id"
-    t.decimal "current_buy_now_price", precision: 5, scale: 2, null: false
+    t.string   "event_id"
+    t.decimal  "current_buy_now_price", precision: 5, scale: 2, null: false
+    t.datetime "expiration_date",                               null: false
   end
 
   create_table "bids", force: :cascade do |t|
@@ -33,9 +34,9 @@ ActiveRecord::Schema.define(version: 20170315024711) do
     t.integer  "user_id"
     t.integer  "bid"
     t.string   "lowest_price"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "saved_bid"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "matched_price"
     t.string   "event_title"
   end
 

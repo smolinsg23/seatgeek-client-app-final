@@ -1,7 +1,7 @@
 namespace :rufus do
   desc "TODO"
   task price_match: :environment do
-    PriceMatch.perform
+    PriceMatchJob.run
   end
 
 end

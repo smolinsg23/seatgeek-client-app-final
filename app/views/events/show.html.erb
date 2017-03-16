@@ -60,6 +60,7 @@
               <!-- end post -->
               <div class="singlepost_title">
                 <h4><%= @events["title"] %> - <%= @venue %> - <%= @city %></h4>
+                <%=@events["visible_until_utc"]%>
               </div>
 
               <% if @image.present? %>
@@ -99,6 +100,8 @@
                 <div>
                   <%= hidden_field_tag :event_title, @events["title"] %>
                 </div>
+                <div>
+                <%= hidden_field_tag :expiration_date, @events["visible_until_utc"] %>
                 <br>
                 <div>
                   <%= submit_tag "Submit", class: "btn_1" %>

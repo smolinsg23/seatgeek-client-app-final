@@ -5,7 +5,7 @@
    json.user_id bid.user_id
    json.bid bid.bid
    json.lowest_price bid.lowest_price
-   json.saved_bid bid.saved_bid
+   json.matched_price bid.matched_price
   
   
  end

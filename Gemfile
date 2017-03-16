@@ -9,7 +9,7 @@ gem 'seatgeek', '~> 1.0'
 # Use Puma as the app server
 gem 'unirest'
 gem 'sidekiq' 
-gem 'sinatra', github: 'sinatra/sinatra'
+gem 'sucker_punch' 
 
 
 gem 'puma', '~> 3.0'

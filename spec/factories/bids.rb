@@ -4,7 +4,7 @@ FactoryGirl.define do
     user_id 1
     bid 1
     lowest_price 1
-    saved_bid 1
+    matched_price 1
     event_title "MyString"
   end
 end

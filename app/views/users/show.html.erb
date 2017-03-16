@@ -35,7 +35,7 @@
                 <div class="well">
                   <p> lowest: <%= a.lowest_price %> </p>
                   <% if a.bid  == 0 %>
-                    <p>Price: <%= a.saved_bid %></p>
+                    <p>Price: <%= a.matched_price %></p>
                   <%else%>
                     <p>Price: <%= a.bid %></p>
                   <% end %>

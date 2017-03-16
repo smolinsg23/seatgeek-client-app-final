@@ -23,9 +23,10 @@ class BidsController < ApplicationController
 
   def create 
 
-    @bidd = Bid.create!(event_id: params[:event_id], user_id: session[:user_id], bid: params[:bid], lowest_price: params[:lowest_price],)    
+    @bidd = Bid.create!(event_id: params[:event_id], user_id: session[:user_id], bid: params[:bid], lowest_price: params[:lowest_price]) 
+    BidEvent.find_or_create_by(event_id: params[:event_id], current_buy_now_price: params[:lowest_price], expiration_date: params[:expiration_date])   
     if session[:user_id] == current_user.id
-     
+      PriceMatchJob.run     
       send_message("+13125501444", "your bid has been created sit back while we find you your ticket")
          
       flash[:success] = "bid created."
