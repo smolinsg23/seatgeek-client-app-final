@@ -8,8 +8,8 @@ gem 'pg', '~> 0.18'
 gem 'seatgeek', '~> 1.0'
 # Use Puma as the app server
 gem 'unirest'
-gem 'sidekiq' 
-gem 'sucker_punch' 
+
+ 
 
 
 gem 'puma', '~> 3.0'
@@ -24,10 +24,7 @@ gem 'coffee-rails', '~> 4.2'
 gem "awesome_print", require:"ap"
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-gem 'chartkick'
-gem 'groupdate'
-gem 'hightop'
-gem 'active_median'
+
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -38,7 +35,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'twilio-ruby', '~> 4.11.1'
 # Use Capistrano for deployment
-gem 'rufus-scheduler'
+
 # gem 'capistrano-rails', group: :development
 gem 'bootstrap-sass', '~> 3.3.6'
 group :development, :test do
