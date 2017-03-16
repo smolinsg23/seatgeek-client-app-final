@@ -46,6 +46,7 @@ class PriceMatchJob < ApplicationJob
   def perform
     Rails.logger.info "Starting Price Match Job at #{Time.now}"
     active_events  = BidEvent.active_events 
+    unmatched_bids=[]
     active_events.each do |bid_event|
       event_id = bid_event.event_id
       puts "*" * 50
@@ -68,10 +69,17 @@ class PriceMatchJob < ApplicationJob
        if low != bid_event.current_buy_now_price
           bid_event.update_current_buy_now_price(low)
         end
+
+        if unmatched_bids.empty?
+
+        unmatched_bids = bid_event.unmatched_bids(low) 
+        print bid_event.unmatched_bids(low)
+      end
       end
     end
     Rails.logger.info "End Price Match Job at #{Time.now}" 
-    if active_events.empty?
+    if active_events.empty? || unmatched_bids.empty?
+      print "stop!"
       self.class.stop!
     else
      self.class.enqueue  

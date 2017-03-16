@@ -16,6 +16,12 @@ class BidEvent < ApplicationRecord
     end 
 
   end
+
+  def unmatched_bids low
+    bids.not_matched.select do |bid|
+      bid.bid < low
+  end
+end
   def update_current_buy_now_price(new_price)
       update_attribute(:current_buy_now_price, new_price)
   end
